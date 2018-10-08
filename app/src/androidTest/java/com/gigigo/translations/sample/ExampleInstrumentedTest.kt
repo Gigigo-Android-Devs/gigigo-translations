@@ -1,4 +1,4 @@
-package com.gigigo.translations
+package com.gigigo.translations.sample
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

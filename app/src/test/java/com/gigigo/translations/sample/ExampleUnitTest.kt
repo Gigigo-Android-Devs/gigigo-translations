@@ -1,4 +1,4 @@
-package com.gigigo.translations
+package com.gigigo.translations.sample
 
 import org.junit.Test
 

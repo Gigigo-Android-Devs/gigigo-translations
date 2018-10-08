@@ -1,18 +1,20 @@
-package com.gigigo.translations
+package com.gigigo.translations.sample
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-
-import kotlinx.android.synthetic.main.activity_main.*
+import com.gigigo.translations.sample.R.id
+import com.gigigo.translations.sample.R.layout
+import kotlinx.android.synthetic.main.activity_main.fab
+import kotlinx.android.synthetic.main.activity_main.toolbar
 
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    setContentView(layout.activity_main)
     setSupportActionBar(toolbar)
 
     fab.setOnClickListener { view ->
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     // automatically handle clicks on the Home/Up button, so long
     // as you specify a parent activity in AndroidManifest.xml.
     return when (item.itemId) {
-      R.id.action_settings -> true
+      id.action_settings -> true
       else -> super.onOptionsItemSelected(item)
     }
   }

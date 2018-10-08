@@ -1,13 +1,11 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.gigigo.translations"
+        applicationId "com.gigigo.translations.sample"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1

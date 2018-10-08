@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <declare-styleable name="TranslationTextView">
+    <attr format="reference" name="translation"/>
+  </declare-styleable>
+
+  <declare-styleable name="TranslationEditText">
+    <attr format="reference" name="translation_hint"/>
+  </declare-styleable>
+</resources>
