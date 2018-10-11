@@ -9,3 +9,7 @@
 /build
 /captures
 .externalNativeBuild
+
+
+keys.properties
+test_keystore.jks

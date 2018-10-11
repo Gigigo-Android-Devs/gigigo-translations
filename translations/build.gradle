@@ -2,16 +2,41 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+group = rootProject.ext.group
+version = rootProject.ext.version
+
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = 'gigigo-translations'
+
+  publishedGroupId = rootProject.ext.group
+  libraryName = 'gigigo-translations'
+  artifact = 'translations'
+
+  libraryDescription = 'translations android lib'
+
+  siteUrl = 'https://github.com/Gigigo-Android-Devs/gigigo-translations'
+  gitUrl = 'https://github.com/Gigigo-Android-Devs/gigigo-translations.git'
+
+  libraryVersion = rootProject.ext.version
+
+  developerId = 'gigigo-desarrollo'
+  developerName = 'gigigo-desarrollo'
+  developerEmail = 'info@gigigo.com'
+
+  licenseName = 'The Apache Software License, Version 2.0'
+  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+  allLicenses = ["Apache-2.0"]
+}
+
 android {
   compileSdkVersion 28
-
-
 
   defaultConfig {
     minSdkVersion 21
     targetSdkVersion 28
-    versionCode 1
-    versionName "1.0"
+    versionCode computeVersionCode()
+    versionName rootProject.ext.version
 
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
@@ -21,6 +46,22 @@ android {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+  }
+
+  testOptions {
+    unitTests.returnDefaultValues = true
+  }
+
+  sourceSets {
+    test {
+      resources {
+        srcDir "test"
+      }
+    }
+  }
+
+  lintOptions {
+    abortOnError false
   }
 }
 
@@ -37,4 +78,21 @@ dependencies {
   testImplementation 'junit:junit:4.12'
   androidTestImplementation 'com.android.support.test:runner:1.0.2'
   androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: '../bintrayv1.gradle'
+repositories {
+  mavenCentral()
+}
+
+/**
+ * Gets the commit number from the current Git commit. E.g. 538*/
+def computeVersionCode() {
+  def stdout = new ByteArrayOutputStream()
+  exec {
+    commandLine 'git', 'rev-list', '--count', 'HEAD'
+    standardOutput = stdout
+  }
+  return stdout.toString().trim().toInteger()
 }
